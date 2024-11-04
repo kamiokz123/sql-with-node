@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+</head>
+<style>
+    .card{
+        border : 1px solid black;
+        padding: 10px; 
+        width: 300px;
+    }
+    .card-holder{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+</style>
+<body>
+    <h1>ALL users will be shown here :</h1> <br> <br>
+    <div> 
+        <a href="/add">
+            <button>
+                Add new User
+            </button>
+        </a>
+    </div>
+    <br>
+    
+    <div class="card-holder">
+        <% data.map((user)=>{%>
+            <div class="card">
+                <h3>username : <%= user.username %></h3>
+                <h3>id : <%= user.id %></h3>
+                <h3>email : <%= user.email %></h3>
+                <br>
+                <form action="users/<%= user.id %>/edit" method="get">
+                    <button>edit username</button>
+                </form>
+                <br>
+                <form action="users/<%= user.id %>/delete?_method=DELETE" method="post">
+                    <button>Delete user</button>
+                </form>
+            </div>
+        <% }); %>  
+    </div>
+</body>
+</html>
